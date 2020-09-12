@@ -1,10 +1,10 @@
 #include <iostream>
 #include "List.h"
-
+#include <time.h>
 
 void example1();
 void example2();
-
+void example3();
 
 void runExample(int num){
     if(num == 1){
@@ -12,6 +12,9 @@ void runExample(int num){
     }
     if(num == 2){
         example2();
+    }
+    if(num == 3){
+        example3();
     }
 }
 
@@ -109,6 +112,9 @@ void example1(){
 
 
 void example2(){
+
+    std::cout << "string example" << std::endl << std::endl;
+
     List<std::string> list;
 
     list.append("Hello");
@@ -117,6 +123,51 @@ void example2(){
     list.append("!");
     
     std::cout << list << std::endl;
+
+    for (int i = 0; i < list.getLen(); i++){
+        std::cout << i << " - " << list[i] << std::endl;
+    }
+    
+
+
+}
+
+
+void example3(){
+    
+    std::cout << "sorting example" << std::endl;
+    std::cout << "int sorting" << std::endl << std::endl;
+
+    List<int> intList;
+
+    srand(time(NULL));
+    for (int i = 0; i < 100; i++){
+        int randNum = rand() % 100 + 1;
+        intList.append(randNum);
+    }
+
+    intList.printList();
+    intList.sortList();
+    intList.printList();
+
+    std::cout << "\nstr sorting" << std::endl << std::endl;
+
+    List<std::string> strList;
+
+    strList.append("!");
+    strList.append("a");
+    strList.append("can");
+    strList.append("hi");
+    strList.append("hello");
+    strList.append("1");
+    strList.append("100");
+    strList.append("asd");
+    strList.append("c");
+    strList.append("*");
+    
+    strList.printList();
+    strList.sortList();
+    strList.printList();
 
 
 }
