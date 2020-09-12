@@ -1,6 +1,6 @@
 #pragma once
 #include<iostream>
-#include<string>
+// #include<string>
 
 template <class T> 
 class node {
@@ -17,24 +17,20 @@ private:
     node<T> *head, *tail;
 public:
 
-
     //construct-destruct
     List();
     List(List<T>&);
     ~List();
 
-
     // add functions
     void append(T);
     void push(T);
-    void insert(int, T);
+    // void insert(int, T);
     
-
     // delete functions
     void remove(int);
     void pop();
     void clear();
-
 
     // get set functions
     T get(int);
@@ -43,18 +39,21 @@ public:
     T operator[](const int);
     // const T& operator[](const int&);
 
-
     // length functions
     int getLen();
     bool isEmpty();
-
 
     // print functions
     void printList();
     void printListCustom(std::string, std::string, std::string listStart, std::string listEnd);
     void printListReverse(int);
 
-    
+    // sort
+    void sortList();
+
+    // other utilities
+    // void reverseList();
+
     // friend functions
     // template problem with friend functions
     // https://stackoverflow.com/questions/4660123/overloading-friend-operator-for-template-class/4661372#4661372
@@ -98,8 +97,6 @@ List<T>::~List() {
 
 
 
-
-
 // add functions
 template <class T>
 void List<T>::append(T newValue) {
@@ -136,8 +133,6 @@ void List<T>::push(T newValue) {
         len++;
     }
 }
-
-
 
 
 
@@ -218,7 +213,6 @@ void List<T>::pop(){
 
 }
 
-
 template <class T>
 void List<T>::clear(){
     if (head != NULL) {
@@ -227,7 +221,7 @@ void List<T>::clear(){
         head = NULL;
         tail = NULL;
 
-        while (cursor->next != NULL) {
+        while (cursor != NULL) {
             cursor = cursor->next;
             free(deleter);
             deleter = cursor;
@@ -236,8 +230,6 @@ void List<T>::clear(){
         cursor = NULL;
     }
 }
-
-
 
 
 
@@ -265,7 +257,6 @@ T List<T>::get(int index){
         }
 }
 
-
 template <class T>
 void List<T>::set(int index, T value) {
 
@@ -291,7 +282,6 @@ void List<T>::set(int index, T value) {
 
 }
 
-
 template <class T>
 T List<T>::top(){
     if(getLen() == 0) {
@@ -301,14 +291,10 @@ T List<T>::top(){
     return tail->value;
 }
 
-
 template <class T>
 T List<T>::operator[](int index){
     return get(index);
 }
-
-
-
 
 
 
@@ -330,14 +316,11 @@ bool List<T>::isEmpty() {
 
 
 
-
-
 // print functions
 template <class T>
 void List<T>::printList() {
     printListCustom(",", "\n", "[", "]");
 }
-
 
 template <class T>
 void List<T>::printListCustom(std::string sep, std::string end, std::string listStart, std::string listEnd) {
@@ -356,7 +339,6 @@ void List<T>::printListCustom(std::string sep, std::string end, std::string list
     }
     cursor = NULL;
 }
-
 
 template <class T>
 void List<T>::printListReverse(int index) {
@@ -398,6 +380,40 @@ void List<T>::printListReverse(int index) {
 
 
 
+// sorting functions
+template <class T>
+void List<T>::sortList(){
+    // bubble sort
+
+    int swapped = 1; 
+    node<T> *cursor = head; 
+    node<T> *cursor2 = NULL; 
+
+    // empty list
+    if (head == NULL){
+        return; 
+    }
+
+    // if no swaps happen in a full pass break
+    while (swapped){
+        swapped = 0; 
+        cursor = head; 
+        while (cursor->next != cursor2){ 
+            if (cursor->value > cursor->next->value){  
+
+                // swap values (because it is easier like that)
+                T temp = cursor->value; 
+                cursor->value = cursor->next->value; 
+                cursor->next->value = temp;    
+
+                swapped = 1; 
+            } 
+            cursor = cursor->next; 
+        } 
+        cursor2 = cursor; 
+    }
+}
+
 
 
 // friend functions
@@ -406,10 +422,4 @@ std::ostream& operator<< (std::ostream &out,  List<T> &l){
     l.printListCustom(",", "", "[", "]");
     return out;
 }
-
-
-
-
-
-
 
