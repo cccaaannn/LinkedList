@@ -1,9 +1,9 @@
 ## LinkedList
 ----
 
-![](https://img.shields.io/github/repo-size/cccaaannn/LinkedList?style=flat-square) [![GitHub license](https://img.shields.io/github/license/cccaaannn/LinkedList?style=flat-square)](https://github.com/cccaaannn/LinkedList/blob/master/LICENSE)
+![GitHub top language](https://img.shields.io/github/languages/top/cccaaannn/LinkedList?style=flat-square) ![](https://img.shields.io/github/repo-size/cccaaannn/LinkedList?style=flat-square) [![GitHub license](https://img.shields.io/github/license/cccaaannn/LinkedList?style=flat-square)](https://github.com/cccaaannn/LinkedList/blob/master/LICENSE)
 
-### C++ linked list example
+### C++ LinkedList
 
 <br/>
  
