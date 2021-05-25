@@ -1,6 +1,5 @@
 #pragma once
 #include<iostream>
-// #include<string>
 
 template <class T> 
 class node {
@@ -50,9 +49,6 @@ public:
 
     // sort
     void sortList();
-
-    // other utilities
-    // void reverseList();
 
     // friend functions
     // template problem with friend functions
@@ -157,7 +153,7 @@ void List<T>::remove(int index){
         else if(index == 0){
             node<T> *cursor = head;
             head = head->next;
-            free(cursor);
+            delete cursor;
             cursor = NULL;
             len--;
             }
@@ -176,7 +172,7 @@ void List<T>::remove(int index){
                 deleter = cursor->next;
             }
             cursor->next = deleter->next;
-            free(deleter);
+            delete deleter;
             cursor = NULL;
             deleter = NULL;
             len--;
@@ -192,7 +188,7 @@ void List<T>::pop(){
 
     // only one element
     else if(getLen() == 1){
-        free(head);
+        delete head;
         head = NULL;
         tail = NULL;
         len = 0;
@@ -204,7 +200,7 @@ void List<T>::pop(){
         while (cursor->next != tail) {
             cursor = cursor->next;
         }
-        free(tail);
+        delete tail;
         tail = cursor;
         tail->next = NULL;
         cursor = NULL;
@@ -223,7 +219,7 @@ void List<T>::clear(){
 
         while (cursor != NULL) {
             cursor = cursor->next;
-            free(deleter);
+            delete deleter;
             deleter = cursor;
         }
         len = 0;
